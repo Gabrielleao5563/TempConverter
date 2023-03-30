@@ -20,31 +20,28 @@ function CollectInfo(){
     var filtro2 = input2.value.toUpperCase();
     var filtro3 = input3.value.toUpperCase();
 
+    var erro1 = document.getElementById("error1");
+    var erro2 = document.getElementById("error2");
+    var erro3 = document.getElementById("error3");
+
     if(filtro1 == ""){
-
+        erro1.style.display="block";
+        erro1.innerHTML="INSIRA UMA ESCALA DE TEMPERATURA!";
     }else{
-        switch (filtro1) {
-            case "CELSIUS":
-                passed1();
-                break;
-            case "FARENHEIT":
-                passed1();
-                break;
-            case "KELVIN":
-                passed1();
-                break;
-            case String(AdditionalScale1.toUpperCase()):
-                passed1();
-                break;
-            case String(AdditionalScale2.toUpperCase()):
-                passed1();
-                break;
+        if(filtro1 == "CELSIUS"){
+            erro1.style.display="none";
+        }else if(filtro1 == "KELVIN"){
+            erro1.style.display="none";
+        }else if(filtro1 == "FARENHEIT"){
+            erro1.style.display="none";
+        }else if(filtro1 == String(AdditionalScale1.toUpperCase())){
+            erro1.style.display="none";
+        }else if(filtro1 == String(AdditionalScale2.toUpperCase())){
+            erro1.style.display="none";
+        }else{
+            erro1.style.display="block";
+            erro1.innerHTML="ESCALA INVÁLIDA INSERIDA!";
         }
-
-    }
-
-    function passed1(){
-
     }
 }
 

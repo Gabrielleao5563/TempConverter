@@ -65,6 +65,7 @@ input.input {
 }
 .error {
     width: 100%;
+    display: none;
     text-align: center;
     background-color: rgb(255, 70, 85);
     padding: 10px 0px;
