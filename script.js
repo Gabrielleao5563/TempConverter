@@ -20,19 +20,31 @@ function CollectInfo(){
     var filtro2 = input2.value.toUpperCase();
     var filtro3 = input3.value.toUpperCase();
 
-    switch (filtro1) {
-        case "":
-            break;
-        case "CELSIUS":
-            break;
-        case "FARENHEIT":
-            break;
-        case "KELVIN":
-            break;
-        case String(AdditionalScale1.toUpperCase()):
-            break;
-        case String(AdditionalScale2.toUpperCase()):
-            break;
+    if(filtro1 == ""){
+
+    }else{
+        switch (filtro1) {
+            case "CELSIUS":
+                passed1();
+                break;
+            case "FARENHEIT":
+                passed1();
+                break;
+            case "KELVIN":
+                passed1();
+                break;
+            case String(AdditionalScale1.toUpperCase()):
+                passed1();
+                break;
+            case String(AdditionalScale2.toUpperCase()):
+                passed1();
+                break;
+        }
+
+    }
+
+    function passed1(){
+
     }
 }
 

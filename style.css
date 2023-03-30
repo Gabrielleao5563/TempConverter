@@ -63,3 +63,11 @@ input.input {
     text-decoration: blue underline;
     color: blue;
 }
+.error {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(255, 70, 85);
+    padding: 10px 0px;
+    border-radius: 10px;
+    font-weight: bolder;
+}
