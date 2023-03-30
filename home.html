@@ -1,0 +1,37 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section id="menu">
+            <p onclick="StartInterface()" class="normal-blank-button">CONVERTER</p>
+        </section>
+        <section id="inform">
+            <h1 class="title">INFORMAÇÕES</h1>
+            <a onclick="CreateNewScale()" class="simple-a-link" href="#">Criar escala</a>
+            <p class="simple-info">Escala Inicial</p>
+            <input class="input" name="Get First Scale" id="FirstScale" type="text" list="Samples">
+            <p class="simple-info">Escala Final</p>
+            <input class="input" name="Get Second Scale" id="SecondScale" type="text" list="Samples">
+            <p class="simple-info">Temperatura a se Converter</p>
+            <input class="input" style="width: 60%;" name="Get Degrees" id="Degrees" type="number">
+            <input type="submit" value="Converter" style="width: 60%; line-height: 200%; border-radius: 10px; cursor: pointer;" onclick="CollectInfo()">
+
+            <datalist id="Samples">
+                <option value="Celsius"></option>
+                <option value="Farenheit"></option>
+                <option value="Kelvin"></option>
+            </datalist>
+        </section>
+        <section id="result">
+
+        </section>
+    </main>
+</body>
+<script src="script.js"></script>
+</html>
