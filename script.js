@@ -13,6 +13,8 @@ var escala2 = 0;
 //----"Celsius = 1 / Farenheit = 2 / Kelvin = 3 / Generated1 = 4 / Generated2 = 5";
 
 function CollectInfo(){
+    var passed = 0;
+
     var input1 = document.getElementById("FirstScale");
     var input2 = document.getElementById("SecondScale");
     var input3 = document.getElementById("Degrees");
@@ -28,25 +30,32 @@ function CollectInfo(){
         case "":
             erro1.style.display="block";
             erro1.innerHTML="INSIRA UMA ESCALA DE TEMPERATURA!";
+            passed = 0;
             break;
         case "CELSIUS":
             erro1.style.display="none";
+            passed = passed + 1;
             break;
         case "KELVIN":
             erro1.style.display="none";
+            passed = passed + 1;
             break;
         case "FARENHEIT":
             erro1.style.display="none";
+            passed = passed + 1;
             break;
         case String(AdditionalScale1.toUpperCase()):
             erro1.style.display="none";
+            passed = passed + 1;
             break;
         case String(AdditionalScale2.toUpperCase()):
             erro1.style.display="none";
+            passed = passed + 1;
             break;
         default:
             erro1.style.display="block";
             erro1.innerHTML="ESCALA INVÁLIDA INSERIDA!";
+            passed = 0;
             break;
     }
 
@@ -54,20 +63,26 @@ function CollectInfo(){
         case "":
             erro2.style.display="block";
             erro2.innerHTML="INSIRA UMA ESCALA DE TEMPERATURA!";
+            passed = 0;
             break;
         case "CELSIUS":
             erro2.style.display="none";
+            passed = passed + 1;
             break;
         case "KELVIN":
             erro2.style.display="none";
+            passed = passed + 1;
             break;
         case "FARENHEIT":
             erro2.style.display="none";
+            passed = passed + 1;
             break;
         case String(AdditionalScale1.toUpperCase()):
+            passed = passed + 1;
             erro2.style.display="none";
             break;
         case String(AdditionalScale2.toUpperCase()):
+            passed = passed + 1;
             erro2.style.display="none";
             break;
         default:
@@ -80,13 +95,13 @@ function CollectInfo(){
         case "":
             erro3.style.display="block";
             erro3.innerHTML="INSIRA UM NÚMERO!";
+            passed = 0;
             break;
         default:
             erro3.style.display="none";
+            passed = passed + 1;
             break;
     }
-
-    //----------------------------CALCULO------------CALCULO-----------------
 
     var escala_1_fusao = 0;
     var escala_2_fusao = 0;
@@ -153,54 +168,58 @@ function CollectInfo(){
             break;
     }
 
+    if(passed == 3){
+        make_the_math();
+    }
+
     //----------------------------CALCULO-----------CALCULO------------------
 
-    var escala_1_final = escala_1_ebulicao - escala_1_fusao;
-    var escala_2_final = escala_2_ebulicao - escala_2_fusao;
+    function make_the_math(){
+        var escala_1_final = escala_1_ebulicao - escala_1_fusao;
+        var escala_2_final = escala_2_ebulicao - escala_2_fusao;
 
-    var fracaosimples = simplify();
+        var fracaosimples = simplify();
 
-    function simplify() {
-        var result = '',
-        numOne = escala_1_final,
-        numTwo = escala_2_final;
-        for (var i = Math.max(numOne, numTwo); i > 1; i--) {
-        if ((numOne % i == 0) && (numTwo % i == 0)) {
-            numOne /= i;
-            numTwo /= i;
+        function simplify() {
+            var result = '',
+            numOne = escala_1_final,
+            numTwo = escala_2_final;
+            for (var i = Math.max(numOne, numTwo); i > 1; i--) {
+            if ((numOne % i == 0) && (numTwo % i == 0)) {
+                numOne /= i;
+                numTwo /= i;
+            }
+            }
+            if (numTwo === 1) {
+                result = numOne.toString()
+            } else {
+            result = numOne.toString() + '/' + numTwo.toString()
+            }
+            return result
         }
+
+        var solicitacao = filtro3 - escala_1_fusao;
+
+        var parte1 = 0;
+        var parte2 = 0;
+
+        read(fracaosimples);
+
+        function read(str){
+            const numbers = str.split('/');
+            parte1 = numbers[0];
+            parte2 = numbers[1];
         }
-        if (numTwo === 1) {
-        result = numOne.toString()
-        } else {
-        result = numOne.toString() + '/' + numTwo.toString()
+
+        fracaosimplesdivisivel = parte1 / parte2;
+        var resultado = solicitacao / fracaosimplesdivisivel;
+
+        if(escala_2_fusao > escala_1_fusao){
+            resultado = resultado + escala_2_fusao;
         }
-        return result
+
+        showresult(resultado, filtro3, escala_1_nome, escala_2_nome);
     }
-
-    var solicitacao = filtro3 - escala_1_fusao;
-
-    var parte1 = 0;
-    var parte2 = 0;
-
-    read(fracaosimples);
-
-    function read(str){
-        const numbers = str.split('/');
-        parte1 = numbers[0];
-        parte2 = numbers[1];
-    }
-
-    fracaosimplesdivisivel = parte1 / parte2;
-    var resultado = solicitacao / fracaosimplesdivisivel;
-
-    if(escala_2_fusao > escala_1_fusao){
-        resultado = resultado + escala_2_fusao;
-    }
-
-    window.alert(fracaosimplesdivisivel);
-
-    showresult(resultado, filtro3, escala_1_nome, escala_2_nome);
 
     //----------------------------FINAL--------------FINAL-------------------
 }
