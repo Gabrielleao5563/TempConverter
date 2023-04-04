@@ -29,7 +29,8 @@ body {
 }
 #absolute {
     position: absolute;
-    bottom: 0%;
+    top: 0%;
+    text-align: center;
     color: white;
 }
 a {
@@ -124,5 +125,5 @@ h1.ontopsuperheader {
     background-color: rgb(255, 70, 85);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    font-size: 200%;
+    font-size: 150%;
 }
