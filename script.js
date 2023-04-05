@@ -212,11 +212,30 @@ function CollectInfo(){
         }
 
         fracaosimplesdivisivel = parte1 / parte2;
+
         var resultado = solicitacao / fracaosimplesdivisivel;
 
+        if(parte1 == undefined){
+            resultado = solicitacao / fracaosimples;
+        }
+        if(parte2 == undefined){
+            resultado = solicitacao / fracaosimples;
+        }
+
+        /*
         if(escala_2_fusao > escala_1_fusao){
             resultado = resultado + escala_2_fusao;
         }
+        */
+
+        resultado = resultado + escala_2_fusao;
+
+        console.log("Fração simples: " + fracaosimples);
+        console.log("Solicitação: " + solicitacao);
+        console.log("Parte1: " + parte1);
+        console.log("Parte2: " + parte2);
+        console.log("F simples divisivel: " + fracaosimplesdivisivel);
+        console.log("Resultado: " + resultado);
 
         showresult(resultado, filtro3, escala_1_nome, escala_2_nome);
     }
