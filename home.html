@@ -1,4 +1,4 @@
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,42 +8,34 @@
 </head>
 <body>
     <main>
-        <p id="absolute">Criado por <a href="https://www.instagram.com/gabriel06leao/" target="_blank">Gabriel Leão</a> com a ajuda de <a href="https://www.instagram.com/diorgedarlon/" target="_blank">Diorge Darlon</a></p>
-        <section id="menu">
-            <p onclick="StartInterface()" class="normal-blank-button">CONVERTER</p>
-        </section>
-        <section id="inform">
-            <div class="result_div_important generic_flex">
-                <h1 class="title">INFORMAÇÕES</h1>
-                <a onclick="CreateNewScale()" class="simple-a-link" href="#">Criar escala</a>
-                <p class="simple-info">Escala Inicial</p>
-                <p class="error" id="error1">ERROR CAUSE HERE</p>
-                <input class="input" name="Get First Scale" id="FirstScale" type="text" list="Samples">
-                <p class="simple-info">Escala Final</p>
-                <p class="error" id="error2">ERROR CAUSE HERE</p>
-                <input class="input" name="Get Second Scale" id="SecondScale" type="text" list="Samples">
-                <p class="simple-info">Temperatura a se Converter</p>
-                <p class="error" style="width: 60%;" id="error3">ERROR CAUSE HERE</p>
-                <input class="input" style="width: 60%;" name="Get Degrees" id="Degrees" type="number">
-                <input type="submit" value="Converter" style="width: 60%; line-height: 200%; border-radius: 10px; cursor: pointer;" onclick="CollectInfo()">
 
-                <datalist id="Samples">
-                    <option value="Celsius"></option>
-                    <option value="Farenheit"></option>
-                    <option value="Kelvin"></option>
-                </datalist>
+        <!--Div principal-->
+        <section class="content">
+
+            <h1 class="header-top">Temp Converter</h1>
+            <div class="main-flex">
+
+                <!--But de criar escala-->
+                <a class="create-scale" href="#" onclick="createscale()">Criar Escala</a>
+
+                <!--Inputs-->
+                <p class="input" id="input1" onclick="chosescale(1)">ESCALA INICIAL</p>
+                <p class="input" id="input2" onclick="chosescale(2)">ESCALA FINAL</p>
+                <input type="number" class="input" name="gettemperature" id="settemperature" placeholder="VALOR A SE CONVERTER">
+
+                <p id="resultado">O resultado irá aparecer aqui</p>
             </div>
         </section>
-        <section id="result">
-            <div class="result_div_important">
-                <h1 class="ontopsuperheader">RESULTADO</h1>
-                <div class="generic_flex">
-                    <p id="result_names">null / null</p>
-                    <p id="result_numbers">0 / 0</p>
-                    <p style="text-align: center;">Se o resultado for NaN significa que o sistema não pode simplificar a equação para converter</p>
-                </div>
-            </div>
-        </section>
+
+        <!--Div de seleção de escala-->
+        <div id="selectablediv">
+            <p onclick="select(1)" class="option" id="option1">CELSIUS</p>
+            <p onclick="select(2)" class="option" id="option2">FAHRENHEIT</p>
+            <p onclick="select(3)" class="option" id="option3">KELVIN</p>
+            <p onclick="select(4)" class="option" id="option4">NAME</p>
+            <p onclick="select(5)" class="option" id="option5">NAME</p>
+        </div>
+
     </main>
 </body>
 <script src="script.js"></script>
