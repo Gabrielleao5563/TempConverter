@@ -16,16 +16,15 @@
             <div class="main-flex">
 
                 <!--But de criar escala-->
-                <a class="create-scale" href="#" onclick="createscale()">Criar Escala</a>
+                <a class="create-scale" href="#" onclick="create_scale()">Criar Escala</a>
 
                 <!--Inputs-->
-                <p class="input" id="input1" onclick="chosescale(1)">ESCALA INICIAL</p>
-                <p class="input" id="input2" onclick="chosescale(2)">ESCALA FINAL</p>
-                <input type="number" class="input" name="gettemperature" id="settemperature" placeholder="VALOR A SE CONVERTER">
+                <p class="input" id="input1" onclick="chose_scale(1)">ESCALA INICIAL</p>
+                <p class="input" id="input2" onclick="chose_scale(2)">ESCALA FINAL</p>
+                <input onkeyup="convert()" type="number" class="input" name="gettemperature" id="settemperature" placeholder="VALOR A SE CONVERTER">
 
                 <p id="resultado">O resultado irá aparecer aqui</p>
                 <br>
-                <p style="color: black; font-weight: bolder;">Valores que usem escalas personalizadas não estão sendo convertidos corretamente. Prossiga com cuidado. Estou investigando o motivo deste erro!</p>
             </div>
         </section>
 

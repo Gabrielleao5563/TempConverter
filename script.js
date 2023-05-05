@@ -1,308 +1,220 @@
-//Variaveis globais
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-var escala1 = 0;
-var escala2 = 0;
+//VARIAVEIS
 
-//Saber se as escalas foram selecionadas
+var extrascale1 = 0;
+var extrascale2 = 0;
+
+var extrascale1name = "";
+var extrascale2name = "";
+
+var extrascale1fusion = 0;
+var extrascale2fusion = 0;
+
+var extrascale1boiling = 0;
+var extrascale2boiling = 0;
+
 var scale1chosed = 0;
-var scale2chosed = 0;
+var scale1chosed = 0;
 
-//Nomes das escalas personalizadas
-var scale1name = "";
-var scale2name = "";
+var basedividida = 0;
 
-//Temperaturas das escalas personalizadas
-var scale1fusiontemp = 0;
-var scale2fusiontemp = 0;
+var base1total = 0;
+var base2total = 0;
 
-var scale1boilingtemp = 0;
-var scale2boilingtemp = 0;
+var resultado = 0;
 
-//Funcao para criar escalas personalizadas
-function createscale(){
+var quemexterno = 0;
 
-    //Verificar se ja ouve algunha escala criada
-    switch (escala1){
+var solicitado = 0;
+
+var esc1nome = "";
+var esc2nome = "";
+
+var esc1fusion = 0;
+var esc2fusion = 0;
+
+var esc1boiling = 0;
+var esc2boiling = 0;
+
+var div = document.getElementById("selectablediv");
+
+//CRIAÇÃO DE ESCALAS PERSONALIZADAS
+
+function create_scale(){
+
+    switch(extrascale1){
+
         case 0:
-            //Caso não estiver sido criada
 
-            //Coleta da Informação
-            scale1name = window.prompt("Nome:");
-            scale1fusiontemp = window.prompt("Fusão:");
-            scale1boilingtemp = window.prompt("Hebulição:");
+            extrascale1name = window.prompt("Qual o nome da escala?");
+            extrascale1fusion = window.prompt("Qual a temperatura de fusão da escala?");
+            extrascale1boiling = window.prompt("Qual a temperatura de hebulição da escala?");
+            extrascale1 = 1;
+            break;  
 
-            //Cadastrar como criada
-            escala1 = 1;
-
-            break;
         case 1:
-            //Caso ja estiver sido criada
 
-            //Repetir o processo com a outra vaga
-            switch (escala2){
+            switch(extrascale2){
+            
                 case 0:
-                    //Caso não estiver sido criada
-        
-                    //Coleta da Informação
-                    scale2name = window.prompt("Nome:");
-                    scale2fusiontemp = window.prompt("Fusão:");
-                    scale2boilingtemp = window.prompt("Hebulição:");
-        
-                    //Cadastrar como criada
-                    escala2 = 1;
-        
-                    break;
-                case 1:
-                    //Caso ja estiver sido criada
-        
-                    //Aviso de que o numero limite de escalas foi excedido
-                    window.alert("Você não pode criar mais que duas escalas personalizadas!");
 
+                    extrascale2name = window.prompt("Qual o nome da escala?");
+                    extrascale2fusion = window.prompt("Qual a temperatura de fusão da escala?");
+                    extrascale2boiling = window.prompt("Qual a temperatura de hebulição da escala?");
+                    extrascale2 = 1;
+                    break;
+                
+                case 1:
+                    
+                    window.alert("Você não pode criar mais do que duas escalas personalizadas!");
                     break;
             }
 
             break;
     }
+
 }
 
-//Controle sobre a div de selecionar escala e suas opcoes
-var selectablediv = document.getElementById("selectablediv");
-var opcao1 = document.getElementById("option4");
-var opcao2 = document.getElementById("option5");
+//ABRIR ABA DE SELEÇÃO DE ESCALA
 
-var inicialoufinal = 0;
+function chose_scale(quem){
 
-//Variaveis das escalas na converssão
-var escala_1_nome = "";
-var escala_1_fusao = 0;
-var escala_1_ebulicao = 0;
+    div.style.left="50%";
 
-var escala_2_nome = "";
-var escala_2_fusao = 0;
-var escala_2_ebulicao = 0;
+    var option1 = document.getElementById("option4");
+    var option2 = document.getElementById("option5");
 
-//Selecionar as escalas
-function chosescale(quem){
-
-    //Exibir o botao das escalar adicionais caso exisitirem
-    if(escala1 == 1){
-        opcao1.style.display="block";
-        opcao1.innerHTML=String(scale1name.toUpperCase());
+    if(extrascale1 == 1){
+        option1.innerHTML=extrascale1name.toUpperCase();
+        option1.style.display="block";
     }else{
-        opcao1.style.display="none";
+        option1.style.display="none";
     }
 
-    //Repetindo para a outra escala
-    if(escala2 == 1){
-        opcao2.style.display="block";
-        opcao2.innerHTML=String(scale2name.toUpperCase());
+    if(extrascale2 == 1){
+        option2.innerHTML=extrascale2name.toUpperCase();
+        option2.style.display="block";
     }else{
-        opcao2.style.display="none";
+        option2.style.display="none";
     }
 
-    selectablediv.style.left="50%";
-
-    inicialoufinal = quem;
+    quemexterno = quem;
 }
-//Escala selecionada
+
+//SELECIONAR AS ESCALAS
+
 function select(qual){
 
-    //Descubrir se é a escala inicial ou a final
-    switch (inicialoufinal){
+    var valornome = "";
+    var valorfusion = 0;
+    var valorboiling = 0;
+
+    switch(qual){
+
         case 1:
 
-            //Definindo Valores
-            switch (qual){
-                case 1:
-                    escala_1_nome = "CELSIUS";
-                    escala_1_fusao = 0;
-                    escala_1_ebulicao = 100;
-
-                    break;
-                case 2:
-                    escala_1_nome = "FAHRENHEIT";
-                    escala_1_fusao = 32;
-                    escala_1_ebulicao = 212;
-
-                    break;
-                case 3:
-                    escala_1_nome = "KELVIN";
-                    escala_1_fusao = 273;
-                    escala_1_ebulicao = 373;
-
-                    break;
-                case 4:
-                    escala_1_nome = String(scale1name.toUpperCase());
-                    escala_1_fusao = scale1fusiontemp;
-                    escala_1_ebulicao = scale1boilingtemp;
-
-                    break;
-                case 5:
-                    escala_1_nome = String(scale2name.toUpperCase());
-                    escala_1_fusao = scale2fusiontemp;
-                    escala_1_ebulicao = scale2boilingtemp;
-
-                    break;
-            }
-
+            valornome = "CELSIUS";
+            valorfusion = 0;
+            valorboiling = 100;
             break;
+        
         case 2:
+            
+            valornome = "FAHRENHEIT";
+            valorfusion = 32;
+            valorboiling = 212;
+            break;
+        
+        case 3:
 
-            //Repetindo a definição de valores
-            switch (qual){
-                case 1:
-                    escala_2_nome = "CELSIUS";
-                    escala_2_fusao = 0;
-                    escala_2_ebulicao = 100;
+            valornome = "KELVIN";
+            valorfusion = 273;
+            valorboiling = 373;
+            break;
+        
+        case 4:
 
-                    break;
-                case 2:
-                    escala_2_nome = "FAHRENHEIT";
-                    escala_2_fusao = 32;
-                    escala_2_ebulicao = 212;
+            valornome = extrascale1name.toUpperCase();
+            valorfusion = extrascale1fusion;
+            valorboiling = extrascale1boiling;
+            break;
 
-                    break;
-                case 3:
-                    escala_2_nome = "KELVIN";
-                    escala_2_fusao = 273;
-                    escala_2_ebulicao = 373;
+        case 5:
 
-                    break;
-                case 4:
-                    escala_2_nome = String(scale1name.toUpperCase());
-                    escala_2_fusao = scale1fusiontemp;
-                    escala_2_ebulicao = scale1boilingtemp;
-
-                    break;
-                case 5:
-                    escala_2_nome = String(scale2name.toUpperCase());
-                    escala_2_fusao = scale2fusiontemp;
-                    escala_2_ebulicao = scale2boilingtemp;
-
-                    break;
-            }
-
+            valornome = extrascale2name.toUpperCase();
+            valorfusion = extrascale2fusion;
+            valorboiling = extrascale2boiling;
             break;
     }
 
-    selectablediv.style.left="-500%";
-
-    //Inserir o nome da escala escolhida no botão
-    var tomodify = document.getElementById(String("input" + inicialoufinal));
-    if(inicialoufinal == 1){
-        tomodify.innerHTML=escala_1_nome;
+    if(quemexterno == 1){
+        esc1nome = valornome;
+        esc1fusion = valorfusion;
+        esc1boiling = valorboiling;
     }else{
-        tomodify.innerHTML=escala_2_nome;
+        esc2nome = valornome;
+        esc2fusion = valorfusion;
+        esc2boiling = valorboiling;
     }
 
-    if(inicialoufinal == 1){
+    div.style.left="-500%";
+
+    var btn = document.getElementById(String("input" + quemexterno));
+
+    btn.innerHTML=valornome;
+
+    if(quemexterno == 1){
         scale1chosed = 1;
-    }else if(inicialoufinal == 2){
+    }else{
         scale2chosed = 1;
     }
+
+    convert();
+
 }
 
-var intervalo1 = setInterval(check, 100);
+//CONVERTER
 
-//Verificar se é possivel converter
-function check(){
-    if(scale1chosed == 1){
-        if(scale2chosed == 1){
-            convert();
-        }
-    }
-}
-
-//Converter a Temperatura
 function convert(){
 
-    var input3 = document.getElementById("settemperature");
-    var filtro3 = input3.value;
-
-    //Temperatura de Ebulição subtraida pela de fusão
-    var escala_1_final = escala_1_ebulicao - escala_1_fusao;
-    var escala_2_final = escala_2_ebulicao - escala_2_fusao;
-    
-    //Simplificar a fração
-    var fracaosimples = simplify();
-
-    //Função para simplificar a fração
-    function simplify() {
-        var result = '',
-        numOne = escala_1_final,
-        numTwo = escala_2_final;
-        for (var i = Math.max(numOne, numTwo); i > 1; i--) {
-        if ((numOne % i == 0) && (numTwo % i == 0)) {
-            numOne /= i;
-            numTwo /= i;
-        }
-        }
-        if (numTwo === 1) {
-            result = numOne.toString()
-        } else {
-        result = numOne.toString() + '/' + numTwo.toString()
-        }
-        return result
+    if(scale1chosed == 0){
+        return;
     }
 
-    //Valor a se converter subtraido pela temperatura de fusão da escala inicial
-    var solicitacao = filtro3 - escala_1_fusao;
-
-    var parte1 = 0;
-    var parte2 = 0;
-
-    //Ler a fraçãosimplificada
-    read(fracaosimples);
-
-    //Função de leitura da fração simplificada
-    function read(str){
-        const numbers = str.split('/');
-        parte1 = numbers[0];
-        parte2 = numbers[1];
+    if(scale2chosed == 0){
+        return;
     }
 
-    //Dividir uma base da fração pela outra
-    fracaosimplesdivisivel = parte1 / parte2;
-    
-    //Valor a se converter subtraido pelo resultado das bases divididas entre si
-    var resultado = solicitacao / fracaosimplesdivisivel;
+    var filtro = document.getElementById("settemperature");
 
-    //Caso o valor de algunha das bases não seja um número válido, o resultado é o valor a se converter dividido pela fracao simplificada
-    if(parte1 == undefined){
-        resultado = solicitacao / fracaosimples;
+    var solicitado = filtro.value;
+
+    solicitado = solicitado - esc1fusion;
+
+    base1total = esc1boiling - esc1fusion;
+    base2total = esc2boiling - esc2fusion;
+
+    if(esc2fusion <= esc1fusion){
+        basedividida = base2total / base1total;
+    }else{
+        basedividida = base2total / base1total;
     }
-    if(parte2 == undefined){
-        resultado = solicitacao / fracaosimples;
-    }
 
-    //Resultado adicionado a temperatura de fusão da escala final
-    resultado = resultado + escala_2_fusao;
+    resultado = Math.floor((solicitado * basedividida) + esc2fusion);
 
-    //Registro dos dados no console do sistema
-    console.log("Fração simples: " + fracaosimples);
-    console.log("Solicitação: " + solicitacao);
-    console.log("Parte1: " + parte1);
-    console.log("Parte2: " + parte2);
-    console.log("F simples divisivel: " + fracaosimplesdivisivel);
-    console.log("Resultado: " + resultado);
+    console.log("Base: " + base1total + "/" + base2total + " Resultado: " + resultado);
 
-    //Chamar a função de mostrar resultados
-    showresult(resultado, filtro3, escala_1_nome, escala_2_nome);
+    showresult(solicitado, esc1nome, esc2nome, resultado);
 }
 
-//Função para mostrar o resultado
-function showresult(content, solicitado, nome1, nome2){
+//MOSTRAR O RESULTADO
+
+function showresult(starting, name1, name2, product){
+
     var texto = document.getElementById("resultado");
 
-    texto.innerHTML=String(solvebug1() + "º em " + nome1 + " equivalem á " + Math.trunc(content) + "º em " + nome2 + "!");
-
-    //Correcao do bug de não aparecer nenhum numero
-    function solvebug1(){
-        if(solicitado == ""){
-            return "0";
-        }else{
-            return solicitado
-        }
-    }
-
+    texto.innerHTML=String("Aproximadamente " + Math.trunc(product) + "º em " + name2 + "!");
 }
+
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
