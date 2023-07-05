@@ -3,27 +3,21 @@
 //VARIAVEIS
 
 //variaveis das escalas personalizadas
-var extrascale1 = 0;
-var extrascale2 = 0;
+var extrascale1 = 0, var extrascale2 = 0;
 
-var extrascale1name = "";
-var extrascale2name = "";
+var extrascale1name = "", var extrascale2name = "";
 
-var extrascale1fusion = 0;
-var extrascale2fusion = 0;
+var extrascale1fusion = 0, var extrascale2fusion = 0;
 
-var extrascale1boiling = 0;
-var extrascale2boiling = 0;
+var extrascale1boiling = 0, var extrascale2boiling = 0;
 
 //salvam a informação sobre se as escalas ja foram selecionadas
-var scale1chosed = 0;
-var scale1chosed = 0;
+var scale1chosed = 0, var scale1chosed = 0;
 
 //sobre as bases da equacoes
 var basedividida = 0;
 
-var base1total = 0;
-var base2total = 0;
+var base1total = 0, var base2total = 0;
 
 //salva o resultado da converssao
 var resultado = 0;
@@ -34,14 +28,11 @@ var quemexterno = 0;
 var solicitado = 0;
 
 //salva os metadados necessarios sobre as escalas para converter
-var esc1nome = "";
-var esc2nome = "";
+var esc1nome = "", var esc2nome = "";
 
-var esc1fusion = 0;
-var esc2fusion = 0;
+var esc1fusion = 0, var esc2fusion = 0;
 
-var esc1boiling = 0;
-var esc2boiling = 0;
+var esc1boiling = 0, var esc2boiling = 0;
 
 //salva o endereco da janela de selecao de escalas caso necessario
 var div = document.getElementById("selectablediv");
