@@ -82,7 +82,7 @@ a.create-scale:hover {
 div#selectablediv {
     position: absolute;
     top: 50%;
-    left: -500%;
+    left: 0%;
     padding: 5%;
     transform: translate(-50%, -50%);
     background-color: white;
