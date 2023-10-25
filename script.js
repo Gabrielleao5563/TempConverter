@@ -88,7 +88,7 @@ function create_scale(){
 function chose_scale(quem){
 
     //abre a janela de selecao
-    div.style.left="50%";
+    div.style.display="initial";
 
     var option1 = document.getElementById("option4");
     var option2 = document.getElementById("option5");
@@ -171,7 +171,7 @@ function select(qual){
     }
 
     //fecha a janela de selecao
-    div.style.left="-500%";
+    div.style.display="none";
 
     //pega o endereco do botao pressionado baseado na informação global passada anteriormente
     var btn = document.getElementById(String("input" + quemexterno));
